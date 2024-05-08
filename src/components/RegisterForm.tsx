@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
+import Error from './Error';
 
 export default function RegisterForm() {
 
-    const { register } = useForm();
+    const { register, handleSubmit, formState: {errors} } = useForm();
+    const registerPatient  = () => {
+    }
 
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
@@ -16,6 +19,7 @@ export default function RegisterForm() {
             <form 
                 className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
                 noValidate
+                onSubmit={handleSubmit(registerPatient)}
             >
                   <div className="mb-5">
                       <label htmlFor="name" className="text-sm uppercase font-bold">
@@ -27,9 +31,12 @@ export default function RegisterForm() {
                           type="text" 
                           placeholder="Nombre del Personal"
                           {...register('name', {
-                            required: 'El nombre es obligatorio'
-                          })} 
+                            required: 'El nombre es obligatorio',
+                          })}
                       />
+                      {errors.name && (
+                          <Error>{errors.name?.message?.toString()}</Error>
+                      )}
                   </div>
     
                   <div className="mb-5">
