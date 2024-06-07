@@ -1,10 +1,13 @@
 import { useForm } from 'react-hook-form';
+import { DraftPerson } from '../types';
 import Error from './Error';
 
 export default function RegisterForm() {
 
-    const { register, handleSubmit, formState: {errors} } = useForm();
-    const registerPatient  = () => {
+    const { register, handleSubmit, formState: {errors} } = useForm<DraftPerson>();
+
+    const registerPatient  = (data: DraftPerson) => {
+        console.log(data);
     }
 
     return (
@@ -25,7 +28,7 @@ export default function RegisterForm() {
                       <label htmlFor="name" className="text-sm uppercase font-bold">
                           Personal
                       </label>
-                      <input  
+                      <input
                           id="name"
                           className="w-full p-3  border border-gray-100"
                           type="text" 
@@ -35,7 +38,7 @@ export default function RegisterForm() {
                           })}
                       />
                       {errors.name && (
-                          <Error>{errors.name?.message?.toString()}</Error>
+                          <Error>{errors.name?.message}</Error>
                       )}
                   </div>
     
@@ -53,7 +56,7 @@ export default function RegisterForm() {
                           })}
                     />
                     {errors.caretaker && (
-                          <Error>{errors.caretaker?.message?.toString()}</Error>
+                          <Error>{errors.caretaker?.message}</Error>
                       )}
                   </div>
     
@@ -75,7 +78,7 @@ export default function RegisterForm() {
                       })} 
                   />
                   {errors.email && (
-                          <Error>{errors.email?.message?.toString()}</Error>
+                          <Error>{errors.email?.message}</Error>
                       )}
                 </div>
     
@@ -85,14 +88,14 @@ export default function RegisterForm() {
                     </label>
                     <input  
                         id="date"
-                        className="w-full p-3  border border-gray-100"  
+                        className="w-full p-3  border border-gray-100"
                         type="date" 
                         {...register('date', {
                             required: 'La fecha es obligatorio',
                           })}
                         />
                         {errors.date && (
-                            <Error>{errors.date?.message?.toString()}</Error>
+                            <Error>{errors.date?.message}</Error>
                         )}
                 </div>
                 
@@ -102,14 +105,14 @@ export default function RegisterForm() {
                     </label>
                     <textarea  
                         id="symptoms"
-                        className="w-full p-3  border border-gray-100"  
+                        className="w-full p-3  border border-gray-100"
                         placeholder="Area de Personal" 
                         {...register('symptoms', {
                             required: 'El area es obligatorio',
                         })}
                         />
                         {errors.symptoms && (
-                            <Error>{errors.symptoms?.message?.toString()}</Error>
+                            <Error>{errors.symptoms?.message}</Error>
                         )}
                 </div>
     
