@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form';
+import { usePersonStore } from '../store';
 import { DraftPerson } from '../types';
 import Error from './Error';
 
 export default function RegisterForm() {
 
+    const {addPerson} = usePersonStore();
     const { register, handleSubmit, formState: {errors} } = useForm<DraftPerson>();
-
     const registerPatient  = (data: DraftPerson) => {
-        console.log(data);
+        addPerson(data);
     }
 
     return (
@@ -48,7 +49,7 @@ export default function RegisterForm() {
                     </label>
                     <input  
                         id="caretaker"
-                        className="w-full p-3  border border-gray-100"  
+                        className="w-full p-3  border border-gray-100"
                         type="text" 
                         placeholder="Nombre del Propietario" 
                         {...register('caretaker', {
@@ -120,6 +121,7 @@ export default function RegisterForm() {
                     type="submit"
                     className="bg-red-600 w-full p-3 text-white uppercase font-bold hover:bg-red-500 cursor-pointer transition-colors"
                     value='Guardar Personal'
+                    onChange={usePersonStore}
                 />
             </form> 
         </div>
