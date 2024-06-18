@@ -19,4 +19,4 @@ export const usePersonStore = create<PersonState>((set) => ({
             persons: [...state.persons, newPerson]
         }))
     }
-})) 
+}))
