@@ -6,9 +6,10 @@ import Error from './Error';
 export default function RegisterForm() {
 
     const {addPerson} = usePersonStore();
-    const { register, handleSubmit, formState: {errors} } = useForm<DraftPerson>();
+    const { register, handleSubmit, formState: {errors}, reset } = useForm<DraftPerson>();
     const registerPatient  = (data: DraftPerson) => {
-        addPerson(data);
+        addPerson(data)
+        reset()
     }
 
     return (
