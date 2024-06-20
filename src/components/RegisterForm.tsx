@@ -5,7 +5,8 @@ import Error from './Error';
 
 export default function RegisterForm() {
 
-    const {addPerson} = usePersonStore();
+    const addPerson = usePersonStore(state => state.addPerson);
+    
     const { register, handleSubmit, formState: {errors}, reset } = useForm<DraftPerson>();
     const registerPatient  = (data: DraftPerson) => {
         addPerson(data)
@@ -14,7 +15,8 @@ export default function RegisterForm() {
 
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
-            <h2 className="font-black text-3xl text-center">Seguimiento Personal</h2>
+            <h2 className="font-black text-3xl text-center">Seguimiento Personal
+            </h2>
     
             <p className="text-lg mt-5 text-center mb-10">
                 Añade Registros y {''}
@@ -26,7 +28,7 @@ export default function RegisterForm() {
                 noValidate
                 onSubmit={handleSubmit(registerPatient)}
             >
-                  <div className="mb-5">
+                  <div className="mb5-">
                       <label htmlFor="name" className="text-sm uppercase font-bold">
                           Personal
                       </label>
@@ -46,7 +48,7 @@ export default function RegisterForm() {
     
                   <div className="mb-5">
                     <label htmlFor="caretaker" className="text-sm uppercase font-bold">
-                        Propietario 
+                        Propietario
                     </label>
                     <input  
                         id="caretaker"
