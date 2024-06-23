@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { usePersonStore } from '../store';
 import { DraftPerson } from '../types';
@@ -6,10 +7,29 @@ import Error from './Error';
 export default function RegisterForm() {
 
     const addPerson = usePersonStore(state => state.addPerson);
+    const activeId = usePersonStore(state => state.activeId);
+    const persons = usePersonStore(state => state.persons);
+    const updatePerson = usePersonStore(state => state.updatePerson);
     
-    const { register, handleSubmit, formState: {errors}, reset } = useForm<DraftPerson>();
+    const { register, setValue, handleSubmit, formState: {errors}, reset } = useForm<DraftPerson>();
+
+    useEffect(() => {
+        if (activeId) {
+            const activePerson = persons.filter(person => person.id === activeId)[0]
+            setValue("name", activePerson.name);
+            setValue("caretaker", activePerson.caretaker);
+            setValue("email", activePerson.email);
+            setValue("date", activePerson.date);
+            setValue("symptoms", activePerson.symptoms);
+        }
+    }, [activeId])
+
     const registerPatient  = (data: DraftPerson) => {
-        addPerson(data)
+        if (activeId) {
+            updatePerson(data);
+        } else {
+            addPerson(data)
+        }
         reset()
     }
 
@@ -23,7 +43,7 @@ export default function RegisterForm() {
                 <span className="text-red-600 font-bold">Administralos</span>
             </p>
     
-            <form 
+            <form
                 className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
                 noValidate
                 onSubmit={handleSubmit(registerPatient)}
