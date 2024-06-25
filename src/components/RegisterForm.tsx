@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { usePersonStore } from '../store';
 import { DraftPerson } from '../types';
 import Error from './Error';
@@ -27,8 +28,10 @@ export default function RegisterForm() {
     const registerPatient  = (data: DraftPerson) => {
         if (activeId) {
             updatePerson(data);
+            toast.success("Usuario Actualizado", {type: 'success'})
         } else {
             addPerson(data)
+            toast.success("Nuevo Usuario Registrado");
         }
         reset()
     }

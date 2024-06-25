@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify"
+import "react-toastify/ReactToastify.css"
 import RegisterForm from "./components/RegisterForm"
 import RegisterList from "./components/RegisterList"
 
@@ -15,6 +17,7 @@ function App() {
           <RegisterList/>
       </div>
     </div>
+      <ToastContainer/>
     </>
   )
 }

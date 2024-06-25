@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import { usePersonStore } from "../store"
 import { Person } from "../types"
 import PersonDetailItem from "./PersonDetailItem"
@@ -10,6 +11,10 @@ export default function PersonDetails({person}: PersonDetailsProps) {
 
   const deletePerson = usePersonStore((state) => state.deletePerson)
   const getPatientByid = usePersonStore((state) => state.getPatientByid)
+  const handleClick = () => {
+    deletePerson(person.id)
+    toast("Se elimino a un Usuario", {type: "error"})
+  }
 
   return (
     <div className="mx-5 my-10 px-5 py-10 bg-white shadow-md rounded-xl"> 
@@ -54,7 +59,7 @@ export default function PersonDetails({person}: PersonDetailsProps) {
           <button 
             type="button"
             className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
-            onClick={() => deletePerson(person.id)}
+            onClick={handleClick}
             >
             Eliminar
           </button>
