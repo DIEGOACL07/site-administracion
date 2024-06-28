@@ -44,7 +44,7 @@ export default function PersonDetails({person}: PersonDetailsProps) {
       />
 
       <PersonDetailItem
-        label="Sintomas"
+        label="Area"
         data={person.symptoms}
       />
 
