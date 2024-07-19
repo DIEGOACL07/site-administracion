@@ -9,11 +9,11 @@ export default function RegisterList() {
     <div className='md:w-1/2 lg:3/5 md:h-screen overflow-y-scroll'>
       {persons.length ? (
         <> 
-          <h2 className='font-black text-3xl text-center'>Listado de Personas</h2>
+          <h2 className='font-black text-3xl text-center'>Listado de Personas Registradas</h2>
           <p className='text-xl mt-5 mb-10 text-center'>
-            Administra tus {""}
-            <span className='text-red-600 font-bold'>Personas y Registros</span>
-          </p>
+            Administra {""}
+              <span className='text-red-600 font-bold'>Personas y Registros</span>
+            </p>
           {persons.map(person => (
             <PersonDetails
               key={person.id}

@@ -7,9 +7,9 @@ function App() {
 
   return (
     <>
-    <div className="container mx-auto mt-20">
-      <h1 className="font-black text-5xl text-center md:w-2/3 md:mx-auto">Seguimiento de Registro de {''}
-      <span className="text-red-500 ">Plataforma</span>
+    <div className="container mx-auto mt-12">
+      <h1 className="font-black text-5xl text-center md:w-2/3 md:mx-auto">Plataforma de Registro y Seguimiento de {''}
+      <span className="text-red-500 ">Personal</span>
       </h1>
 
       <div className="mt-12 md:flex">

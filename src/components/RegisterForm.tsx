@@ -51,41 +51,41 @@ export default function RegisterForm() {
                 noValidate
                 onSubmit={handleSubmit(registerPatient)}
             >
-                  <div className="mb5-">
-                      <label htmlFor="name" className="text-sm uppercase font-bold">
-                          Personal
-                      </label>
-                      <input
-                          id="name"
-                          className="w-full p-3  border border-gray-100"
-                          type="text" 
-                          placeholder="Nombre del Personal"
-                          {...register('name', {
-                            required: 'El nombre es obligatorio',
-                          })}
-                      />
-                      {errors.name && (
-                          <Error>{errors.name?.message}</Error>
-                      )}
-                  </div>
     
                   <div className="mb-5">
                     <label htmlFor="caretaker" className="text-sm uppercase font-bold">
-                        Propietario
+                        Empresa
                     </label>
                     <input  
                         id="caretaker"
                         className="w-full p-3  border border-gray-100"
                         type="text" 
-                        placeholder="Nombre del Propietario" 
+                        placeholder="Nombre de la Empresa" 
                         {...register('caretaker', {
-                            required: 'El propietario es obligatorio',
-                          })}
+                            required: 'El Empresa es obligatorio',
+                        })}
                     />
                     {errors.caretaker && (
                           <Error>{errors.caretaker?.message}</Error>
                       )}
                   </div>
+                        <div className="mb5-">
+                            <label htmlFor="name" className="text-sm uppercase font-bold">
+                                Personal
+                            </label>
+                            <input
+                                id="name"
+                                className="w-full p-3  border border-gray-100"
+                                type="text" 
+                                placeholder="Nombre del Personal"
+                                {...register('name', {
+                                required: 'El nombre es obligatorio',
+                                })}
+                            />
+                            {errors.name && (
+                                <Error>{errors.name?.message}</Error>
+                            )}
+                        </div>
     
                 <div className="mb-5">
                   <label htmlFor="email" className="text-sm uppercase font-bold">
@@ -111,7 +111,7 @@ export default function RegisterForm() {
     
                 <div className="mb-5">
                     <label htmlFor="date" className="text-sm uppercase font-bold">
-                        Fecha Alta 
+                        Fecha de Registro
                     </label>
                     <input  
                         id="date"

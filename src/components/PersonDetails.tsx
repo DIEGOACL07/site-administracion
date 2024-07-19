@@ -24,14 +24,15 @@ export default function PersonDetails({person}: PersonDetailsProps) {
       />
 
       <PersonDetailItem
+        label="Empresa"
+        data={person.caretaker}
+      />
+
+      <PersonDetailItem
         label="Nombre"
         data={person.name}
       />
 
-      <PersonDetailItem
-        label="Propietario"
-        data={person.caretaker}
-      />
 
       <PersonDetailItem
         label="Email"
